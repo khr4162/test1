@@ -1,0 +1,40 @@
+package com.ezen.myproject.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.ezen.myproject.handler.FileHandler;
+import com.ezen.myproject.repository.UserDAO;
+import com.ezen.myproject.service.BoardService;
+import com.ezen.myproject.service.CommentService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+@RequestMapping("/board/*")
+public class BoardController {
+	
+	@Inject
+	private BoardService bsv;
+	@Inject
+	private UserDAO udao;
+	@Inject
+	private CommentService csv;
+	@Inject
+	private FileHandler fhd;
+	
+	@GetMapping("/register")
+	public String registerGet() {
+		return "/board/register";
+	}
+	
+	@PostMapping("/register")
+	public String registerPost(BoardVO bvo, RedirectAttributes rArr
+			@RequestParam(name="file", requ))
+}

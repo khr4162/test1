@@ -1,0 +1,104 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Board List Page</title>
+<style type="text/css">
+	h1{
+	text-align: center;
+	padding-top: 120px;
+	}
+	
+	body{
+	background-color: azure;
+	margin: auto;
+	text-align: center;
+	}
+	
+	.box1{
+	text-align: center;
+	background-color: white;
+	width: 1200px;
+	vertical-align: middle;
+	display: inline-block;
+	position: absolute;
+	top: 40%;
+ 	left: 50%;
+ 	transform: translate(-50%, -50%);
+	}
+	
+	.box1>.box2{
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 10px;
+	margin-bottom: 10px;
+ 	position: absolute;
+	}
+	
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+<h1>Board List Page</h1><br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<div class="box1">
+<form action="/board/list" method="get">
+<c:set value="${ph.pgvo.type }" var="typed"></c:set>
+	<select name="type">
+		<option ${typed == null ? 'selected':'' }>선택</option>
+		<option value="t" ${typed eq 't' ? 'selected':'' }>제목</option>
+		<option value="c" ${typed eq 'c' ? 'selected':'' }>내용</option>
+		<option value="w" ${typed eq 'w' ? 'selected':'' }>작성자</option>
+	</select>
+	<input type="text" name="keyword"
+	 placeholder="search" value="${ph.pgvo.keyword }">
+	<input type="hidden" name="pageNo" value="1">
+	<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+	<button type="submit">검색</button>
+
+</form>
+<div class="box2">
+<table border="1">
+<tr>
+	<th width="10%">bno</th>
+	<th width="30%">title</th>
+	<th width="20%">writer</th>
+	<th width="30%">reg_date</th>
+	<th width="10%">read_count</th>
+</tr>
+<c:forEach items="${list }" var="bvo">
+<tr>
+	<td>${bvo.bno }</td>
+	<td>
+	<a href="/board/detail?bno=${bvo.bno }">${bvo.title }</a>
+	</td>
+	<td>${bvo.writer }</td>
+	<td>${bvo.reg_date }</td>
+	<td>${bvo.read_count }</td>
+</tr>
+</c:forEach>
+</table>
+</div>
+<!-- Paging Line -->
+<div>
+<c:if test="${ph.prev }">
+<a href="/board/list?pageNo=${ph.startPage -1 }&qty=${ph.pgvo.qty}&type${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">이전</a>
+</c:if>
+
+<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+	<a href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}&type${ph.pgvo.type}&keyword=${ph.pgvo.keyword}"> ${i } | </a>
+</c:forEach>
+
+<c:if test="${ph.next }">
+<a href="/board/list?pageNo=${ph.endPage +1 }&qty=${ph.pgvo.qty}&type${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">다음</a>
+</c:if>
+</div>
+
+<a href="/"><button>index</button></a> <br>
+</div>
+<%@ include file="/WEB-INF/views/layout/footer.jsp" %>
+</body>
+</html>

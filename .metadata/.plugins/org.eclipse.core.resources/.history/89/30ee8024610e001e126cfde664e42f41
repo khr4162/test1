@@ -1,0 +1,16 @@
+package com.ezen.myproject.service;
+
+import com.ezen.myproject.domain.BoardDTO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class BoardServiceImpl implements BoardService{
+
+	@Override
+	public int register(BoardDTO bdto) {
+		
+		return isOk;
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.ezen.myproject.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ezen.myproject.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequestMapping("member/*")
+@Controller
+public class UserController {
+	
+	@Inject
+	private UserService usv;
+}

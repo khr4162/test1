@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+footer{
+	height : 50px;
+	background-color: rightgray;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	position: absolute;
+	}
+</style>
+</head>
+<body>
+<div id="wrap">
+ <footer>이 게시글은 형래가 만들었고... 어... 음... 또...</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+package com.ezen.myproject.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ezen.myproject.domain.UserVO;
+import com.ezen.myproject.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequestMapping("member/*")
+@Controller
+public class UserController {
+	
+	@Inject
+	private UserService usv;
+	
+	@GetMapping
+	public String joinPage(Model m) {
+		return "/user/join";
+	}
+	
+	@PostMapping("/join")
+	public String join(Model m, UserVO uvo) {
+		log.info("회원가입 접근");
+		int isOk = usv.join(uvo);
+		if(isOk > 0) {
+			m.addAttribute("msg_signup", 1);
+		}else {
+			m.addAttribute("msg_signup", 0);
+		}
+		return "home";
+	}
+}

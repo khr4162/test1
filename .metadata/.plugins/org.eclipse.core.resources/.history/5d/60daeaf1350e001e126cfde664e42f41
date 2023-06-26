@@ -1,0 +1,16 @@
+package com.ezen.myproject.service;
+
+import com.ezen.myproject.domain.UserVO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public int join(UserVO uvo) {
+		log.in
+		return 0;
+	}
+
+}

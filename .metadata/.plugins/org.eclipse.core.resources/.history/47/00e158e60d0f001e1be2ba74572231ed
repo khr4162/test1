@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style type="text/css">
+	body{
+	background-color: azure;
+	}
+	
+	h1{
+	text-align: center;
+	margin-top: 50px;
+	}
+
+	.box1{
+	text-align: center;
+	margin : 75px;
+	background-color: white;
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	margin-left:25%;
+	}
+		
+	.btn1{
+	font-size: 20px;
+	padding: 5px;
+	display: inline-block;
+	margin-top: 40px;
+	}
+	</style>
+</head>
+<body>
+<h1>로그인 페이지</h1>
+<div class="box1">
+	<form action="/member/login" method="post">
+	ID : <input type="text" name="id" placeholder="아이디"><br>
+	PassWord : <input type="password" name="pw" placeholder="비밀번호">
+	<button type="submit">로그인</button>
+	</form>
+</div>
+</body>
+</html>

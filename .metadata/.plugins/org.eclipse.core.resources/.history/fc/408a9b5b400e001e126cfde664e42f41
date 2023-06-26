@@ -1,0 +1,11 @@
+package com.ezen.myproject.repository;
+
+import com.ezen.myproject.domain.UserVO;
+
+public interface UserDAO {
+
+	UserVO login(String id);
+
+	int join(UserVO uvo);
+
+}

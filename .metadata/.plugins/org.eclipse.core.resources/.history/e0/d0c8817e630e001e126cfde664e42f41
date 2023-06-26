@@ -1,0 +1,9 @@
+package com.ezen.myproject.service;
+
+import com.ezen.myproject.domain.BoardDTO;
+
+public interface BoardService {
+
+	int register(BoardDTO bdto);
+
+}

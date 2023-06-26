@@ -1,0 +1,45 @@
+package com.ezen.myproject.handler;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.joda.time.LocalDate;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ezen.myproject.domain.FileVO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class FileHandler {
+	
+	private final String UP_DIR = "D:\\_myweb\\_java\\fileupload2";
+
+	public List<FileVO> uploadFiles(MultipartFile[] files) {
+		LocalDate date = LocalDate.now();
+		String today = date.toString();
+		today = today.replace("-", File.separator);
+		
+		File folders = new File(UP_DIR, today);
+		
+		if(!folders.exists()) {
+			folders.mkdir();
+		}
+		
+		List<FileVO> flist = new ArrayList<FileVO>();
+		for(MultipartFile file : files) {
+			FileVO fvo = new FileVO();
+			fvo.setSave_dir(today);
+			fvo.setFile_size(file.getSize());
+			
+			String originalFileName = file.getOriginalFilename();
+			String onlyFileNmae = originalFileName.substring(
+					originalFileName.lastIndexOf(File.separator)+1);
+			log.info
+		}
+		
+		return null;
+	}
+
+}
